@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
+import axios from 'axios';
+
 const items = [
   {
     key: 'sub1',
@@ -28,7 +30,22 @@ const items = [
     ],
   },
 ];
+
+
 const App = () => {
+  
+
+  const fetchMain = () => {
+    axios.get("http://127.0.0.1:8000/").then(r => {
+      console.log(r)
+    })
+  }
+
+  useEffect(() => {
+    fetchMain()
+  }, [])
+
+
   const onClick = e => {
     console.log('click ', e);
   };
