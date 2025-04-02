@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Aria, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
+/* Кастомные стили (опционально) */
+body {
+  @apply bg-gray-50 text-gray-800; /* Tailwind-классы */
+}
+
+.ant-btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700 !important; /* Переопределение Ant Design */
 }
