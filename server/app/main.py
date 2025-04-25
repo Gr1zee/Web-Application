@@ -3,8 +3,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers import router as api_router
 
-from core.config import Settings
-
 app = FastAPI()
 app.include_router(api_router)
 
