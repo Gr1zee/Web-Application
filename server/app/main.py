@@ -2,8 +2,17 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers import router as api_router
+from contextlib import asynccontextmanager
+from core.models import db_helper
 
-app = FastAPI()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    yield
+    await db_helper.dispose()
+
+
+app = FastAPI(lifespan=lifespan)
 app.include_router(api_router)
 
 origins = ["*"]
